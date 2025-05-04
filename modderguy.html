@@ -1,42 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>QUEL Player</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Stream</title>
   <style>
     body {
       margin: 0;
-      background: #000;
+      background: linear-gradient(to bottom, #000000, #1e1e2f);
+      font-family: Arial, sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
-    video {
+
+    .ad-banner {
       width: 100%;
-      height: 100vh;
-      background: #000;
+      max-width: 800px;
+      margin: 10px 0;
+    }
+
+    .player-container {
+      width: 90%;
+      max-width: 800px;
+      background-color: #111;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    }
+
+    iframe {
+      width: 100%;
+      height: 450px;
+      border: none;
+    }
+
+    .telegram-button {
+      margin-top: 20px;
+      background-color: #0088cc;
+      padding: 12px 24px;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .telegram-button:hover {
+      background-color: #006699;
     }
   </style>
 </head>
 <body>
-  <video id="video" controls autoplay></video>
 
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-  <script>
-    const video = document.getElementById('video');
-    const urlParams = new URLSearchParams(window.location.search);
-    const videoSrc = urlParams.get('id');
+  <img class="ad-banner" src="https://your-ad-image-url.com/top.jpg" alt="Top Ad">
 
-    if (videoSrc) {
-      if (Hls.isSupported()) {
-        const hls = new Hls();
-        hls.loadSource(videoSrc);
-        hls.attachMedia(video);
-      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = videoSrc;
-      } else {
-        alert('Your browser does not support HLS playback.');
-      }
-    } else {
-      alert('No video link provided.');
-    }
-  </script>
+  <div class="player-container">
+    <iframe src="https://ipladjustble.pages.dev/" allowfullscreen></iframe>
+  </div>
+
+  <img class="ad-banner" src="https://your-ad-image-url.com/bottom.jpg" alt="Bottom Ad">
+
+  <a class="telegram-button" href="https://t.me/your_channel" target="_blank">Join Telegram Channel</a>
+
 </body>
 </html>
